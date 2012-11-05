@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 app_name=
 backup_dir=/home/$(logname)/backups
