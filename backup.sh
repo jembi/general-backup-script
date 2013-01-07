@@ -6,7 +6,7 @@ backup_filename=$app_name-backup-`date +%Y-%m-%d`
 backup_filename_tar=$backup_filename".tar.gz"
 
 # Print status
-echo "Backing up $appname..."
+echo "Backing up $app_name..."
 
 cd $backup_dir
 
@@ -25,10 +25,13 @@ mysqldump -u $db_user -p$db_password $db_name > $backup_dir/$backup_filename_sql
 # Backup a file
 cp /path/to/file.txt $backup_dir
 
+# Backup an entire folder
+cp -r /path/to/folder $backup_dir
+
 # Archive all the things
 #-----------------------
 
-tar czf $backup_dir/$backup_filename_tar $backup_filename_sql file.txt
+tar czf $backup_dir/$backup_filename_tar $backup_filename_sql file.txt folder
 
 # Cleanup
 #--------
@@ -37,6 +40,7 @@ tar czf $backup_dir/$backup_filename_tar $backup_filename_sql file.txt
 
 rm $backup_dir/$backup_filename_sql
 rm $backup_dir/file.txt
+rm -r $backup_dir/folder
 
 # Finalise
 ----------
