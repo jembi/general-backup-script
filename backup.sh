@@ -43,7 +43,7 @@ rm $backup_dir/file.txt
 rm -r $backup_dir/folder
 
 # Finalise
-----------
+#----------
 
 # Print status
 echo "Done backing up $app_name."
