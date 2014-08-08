@@ -52,11 +52,14 @@ echo "Done backing up $app_name."
 echo "Created backup file: " $backup_filename_tar " in " $backup_dir
 
 # Copy to off site server
+#
+# Command depends on the 'sshpass' utility, which is debian/ubuntu specific
+# On other systems, ssh keys may be an option
 $remote_user=""
 $remote_pass=""
 $remote_host=""
 $remote_dir=""
-scp $backup_dir/$backup_filename_tar $remote_user@$remote_host:$remote_dir
+sshpass -p "$remote_pass" scp $backup_dir/$backup_filename_tar $remote_user@$remote_host:$remote_dir
 echo "Copied backup file to remote server: " $backup_filename_tar
 
 # Cleanup old backup files
